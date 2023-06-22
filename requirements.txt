@@ -7,3 +7,4 @@ streamlit==1.17.0
 torch==2.0.0
 transformers==4.27.1
 en-core-web-lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.5.0/en_core_web_lg-3.5.0-py3-none-any.whl
+scikit-learn==1.2.2
