@@ -26,9 +26,9 @@ st.set_page_config(
 )
 
 
-output_dir = "D:\\Models\\model_save"
-enc_dir = "D:\\Models\\target_encodings.pkl"
-matcher_dir = "C:\\Users\\ATIF SHAIK\\linkedin_skill.txt"
+output_dir = "\model_save"
+enc_dir = "target_encodings.pkl"
+matcher_dir = "linkedin_skill.txt"
 
 @st.cache
 def bert(dir_):
