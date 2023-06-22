@@ -54,7 +54,7 @@ def ph_match(fold):
 
 
 
-# encode =  pkl.load(open("D:\\Models\\target_encodings.pkl", 'rb'))
+# encode =  pkl.load(open("target_encodings.pkl", 'rb'))
 # output_dir = "D:\\Models\\model_save"
 
 label_encoder = label_enc(enc_dir)
@@ -63,7 +63,7 @@ label_encoder = label_enc(enc_dir)
 model_loaded = bert(output_dir)
 tokenizer_loaded = bert_token(output_dir)
 
-txt = ph_match("C:\\Users\\ATIF SHAIK\\linkedin_skill.txt")
+txt = ph_match(matcher_dir)
 
 st.markdown(
     """
