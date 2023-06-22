@@ -10,8 +10,6 @@ import re
 import docx2txt
 from spacy.matcher import PhraseMatcher
 
-matcher = PhraseMatcher(nlp.vocab)
-
 from transformers import BertForSequenceClassification
 from transformers import BertTokenizer
 
@@ -36,6 +34,8 @@ def nlp_load():
     return load_llm
 
 nlp = nlp_load()
+
+matcher = PhraseMatcher(nlp.vocab)
 
 @st.cache
 def bert(dir_):
