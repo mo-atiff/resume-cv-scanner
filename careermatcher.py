@@ -26,7 +26,7 @@ st.set_page_config(
 )
 
 
-output_dir = "\model_save"
+output_dir = "/model_save"
 enc_dir = "target_encodings.pkl"
 matcher_dir = "linkedin_skill.txt"
 
