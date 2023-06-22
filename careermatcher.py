@@ -5,7 +5,7 @@ import numpy as np
 import pickle as pkl
 import spacy
 from spacy.lang.en.stop_words import STOP_WORDS
-# nlp = spacy.load('en_core_web_lg')
+nlp = spacy.load('en_core_web_lg')
 import re
 import docx2txt
 from spacy.matcher import PhraseMatcher
@@ -13,6 +13,7 @@ from spacy.matcher import PhraseMatcher
 from transformers import BertForSequenceClassification
 from transformers import BertTokenizer
 
+matcher = PhraseMatcher(nlp.vocab)
 
 import torch
 
@@ -28,14 +29,6 @@ output_dir = "model_save"
 enc_dir = "target_encodings.pkl"
 matcher_dir = "linkedin_skill.txt"
 
-@st.cache
-def nlp_load():
-    load_llm = spacy.load('en_core_web_lg')
-    return load_llm
-
-nlp = nlp_load()
-
-matcher = PhraseMatcher(nlp.vocab)
 
 @st.cache
 def bert(dir_):
