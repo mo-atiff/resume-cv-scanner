@@ -31,39 +31,33 @@ matcher_dir = "linkedin_skill.txt"
 
 
 @st.cache
-def bert(dir_):
-    model_loaded_temp = BertForSequenceClassification.from_pretrained(dir_)
+def bert():
+    model_loaded_temp = BertForSequenceClassification.from_pretrained(output_dir)
     return model_loaded_temp
 
 @st.cache
-def bert_token(dir_tok):
-    tokenizer_loaded_temp = BertTokenizer.from_pretrained(dir_tok)
+def bert_token():
+    tokenizer_loaded_temp = BertTokenizer.from_pretrained(output_dir)
     return tokenizer_loaded_temp
 
 @st.cache
-def label_enc(dir_enc):
-    enc = pkl.load(open(dir_enc, 'rb'))
+def label_enc():
+    enc = pkl.load(open(enc_dir, 'rb'))
     return enc
 
 @st.cache
-def ph_match(fold):
-    with open(fold, 'r', encoding='utf-8') as file:
+def ph_match():
+    with open(matcher_dir, 'r', encoding='utf-8') as file:
         text = file.read()
 
     return text
 
 
+label_encoder = label_enc()
+model_loaded = bert()
+tokenizer_loaded = bert_token()
 
-# encode =  pkl.load(open("target_encodings.pkl", 'rb'))
-# output_dir = "D:\\Models\\model_save"
-
-label_encoder = label_enc(enc_dir)
-# model_loaded = BertForSequenceClassification.from_pretrained(output_dir)
-# tokenizer_loaded = BertTokenizer.from_pretrained(output_dir)
-model_loaded = bert(output_dir)
-tokenizer_loaded = bert_token(output_dir)
-
-txt = ph_match(matcher_dir)
+txt = ph_match()
 
 st.markdown(
     """
