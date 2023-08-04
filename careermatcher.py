@@ -10,8 +10,13 @@ import re
 import docx2txt
 from spacy.matcher import PhraseMatcher
 
-from transformers import BertForSequenceClassification
-from transformers import BertTokenizer
+# from transformers import BertForSequenceClassification
+# from transformers import BertTokenizer
+# Load model directly
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+
+# tokenizer = AutoTokenizer.from_pretrained("liberatoratif/BERT-resume-job-recommender")
+# model = AutoModelForSequenceClassification.from_pretrained("liberatoratif/BERT-resume-job-recommender")
 
 matcher = PhraseMatcher(nlp.vocab)
 
@@ -25,27 +30,29 @@ st.set_page_config(
 )
 
 
-output_dir = "model_save"
+# output_dir = "model_save"
 enc_dir = "target_encodings.pkl"
 matcher_dir = "linkedin_skill.txt"
 
 
 @st.cache
 def bert():
-    model_loaded_temp = BertForSequenceClassification.from_pretrained(output_dir)
+    # model_loaded_temp = BertForSequenceClassification.from_pretrained(output_dir)
+    model_loaded_temp = AutoModelForSequenceClassification.from_pretrained("liberatoratif/BERT-resume-job-recommender")
     return model_loaded_temp
 
-@st.cache
+# @st.cache
 def bert_token():
-    tokenizer_loaded_temp = BertTokenizer.from_pretrained(output_dir)
+    # tokenizer_loaded_temp = BertTokenizer.from_pretrained(output_dir)
+    tokenizer_loaded_temp = AutoTokenizer.from_pretrained("liberatoratif/BERT-resume-job-recommender")
     return tokenizer_loaded_temp
 
-@st.cache
+# @st.cache
 def label_enc():
     enc = pkl.load(open(enc_dir, 'rb'))
     return enc
 
-@st.cache
+# @st.cache
 def ph_match():
     with open(matcher_dir, 'r', encoding='utf-8') as file:
         text = file.read()
