@@ -35,7 +35,7 @@ enc_dir = "target_encodings.pkl"
 matcher_dir = "linkedin_skill.txt"
 
 
-@st.cache
+# @st.cache
 def bert():
     # model_loaded_temp = BertForSequenceClassification.from_pretrained(output_dir)
     model_loaded_temp = AutoModelForSequenceClassification.from_pretrained("liberatoratif/BERT-resume-job-recommender")
